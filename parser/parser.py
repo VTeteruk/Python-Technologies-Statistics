@@ -37,7 +37,6 @@ def calculate_technologies(soup: BeautifulSoup) -> None:
     for technology in config.TECHNOLOGIES:
         if re.findall(f" +{technology.lower()}", soup.get_text().lower()):
             RESULTS[technology] += 1
-            continue
 
 
 def combine_data() -> None:
