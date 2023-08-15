@@ -2,8 +2,10 @@ import csv
 import logging
 import re
 from urllib.parse import urljoin
+
 import requests
 from bs4 import BeautifulSoup
+
 import config
 
 RESULTS = dict.fromkeys(config.TECHNOLOGIES, 0)
@@ -18,7 +20,7 @@ def create_soup(url: str) -> BeautifulSoup:
     return BeautifulSoup(page, "html.parser")
 
 
-def parse_page_number(soup: BeautifulSoup):
+def parse_page_number(soup: BeautifulSoup) -> int:
     number = int(soup.select("li.page-item > a.page-link")[-2].text)
     return number if number else 0
 
@@ -27,7 +29,7 @@ def parse_vacancies_references(soup: BeautifulSoup) -> list:
     return [reference["href"] for reference in soup.select("a.profile")]
 
 
-def parse_detailed_vacancy(soup: BeautifulSoup):
+def parse_detailed_vacancy(soup: BeautifulSoup) -> BeautifulSoup:
     return soup.select_one("div.mb-4")
 
 
@@ -43,7 +45,7 @@ def combine_data() -> None:
     del RESULTS["JS"]
 
 
-def write_to_csv(data: dict):
+def write_to_csv(data: dict) -> None:
     with open("py-technologies.csv", "w", newline="") as file:
         writer = csv.writer(file)
         writer.writerow(("Technology", "Value"))
