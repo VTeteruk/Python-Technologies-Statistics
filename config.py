@@ -24,3 +24,5 @@ TECHNOLOGIES = (
     "NumPy",
     "SQLAlchemy"
 )
+
+TIME_WHEN_UPDATE_FILE = 360
