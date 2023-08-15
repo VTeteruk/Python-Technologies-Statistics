@@ -1,8 +1,14 @@
+import os.path
+
 import pandas as pd
 from matplotlib import pyplot as plt
+import config
+from parser.parser import main
 
-data = pd.read_csv("py-technologies.csv")
-df = pd.DataFrame(data).sort_values("Value", ascending=False)
+if not os.path.exists("py-technologies.csv"):
+    main(config.DJINNI_PYTHON_JOBS_URL)
+
+df = pd.read_csv("py-technologies.csv").sort_values("Value", ascending=False)
 
 colors = ["red" if value > df["Value"].mean() else "blue" for value in df["Value"]]
 

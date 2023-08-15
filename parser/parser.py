@@ -44,7 +44,7 @@ def combine_data() -> None:
 
 
 def write_to_csv(data: dict):
-    with open("../py-technologies.csv", "w", newline="") as file:
+    with open("py-technologies.csv", "w", newline="") as file:
         writer = csv.writer(file)
         writer.writerow(("Technology", "Value"))
         for technology, value in data.items():
