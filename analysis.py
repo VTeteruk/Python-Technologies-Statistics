@@ -1,8 +1,10 @@
 import logging
 import os.path
 from datetime import datetime
+
 import pandas as pd
 from matplotlib import pyplot as plt
+
 import config
 from parser.parser import main
 
@@ -30,4 +32,6 @@ plt.title("Python technologies according to djinni vacancies")
 plt.xlabel("Technologies")
 plt.ylabel("Value")
 plt.tight_layout()
+plt.savefig(f"plots/output_plot{str(datetime.now()).replace(' ', '_').replace(':', '-')}.png")
 plt.show()
+plt.close()
