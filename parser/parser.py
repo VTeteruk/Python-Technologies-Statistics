@@ -26,7 +26,7 @@ def parse_page_number(soup: BeautifulSoup) -> int:
 
 
 def parse_vacancies_references(soup: BeautifulSoup) -> list:
-    return [reference["href"] for reference in soup.select("a.profile")]
+    return [reference["href"] for reference in soup.select("a.job-list-item__link")]
 
 
 def parse_detailed_vacancy(soup: BeautifulSoup) -> BeautifulSoup:
